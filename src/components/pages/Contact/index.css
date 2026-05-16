@@ -1,0 +1,120 @@
+.contact-container {
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px ;
+    
+}
+
+/* Main Card */
+.contact-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1000px;
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f3f4f6;
+}
+
+/* Left Side */
+.contact-header {
+    flex: 1;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+    text-align: left;
+}
+
+/* Right Side Form */
+.mail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* TextField Styling */
+.mail .MuiOutlinedInput-root {
+    border-radius: 12px;
+    background: #fafafa;
+    outline: none;
+}
+
+/* Button */
+.submit-btn {
+    background-color: #111827 !important;
+    padding: 14px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+.submit-btn:hover {
+    background-color: #2563eb !important;
+    transform: translateY(-2px);
+}
+.contact-header-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.contact-subtext{
+
+    color:#4B5563 ;
+}
+.mail-textarea{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+    .contact-card {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 40px;
+    }
+
+    .contact-header {
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .mail {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    .contact-container {
+        padding: 20px;
+    }
+
+    .contact-card {
+        padding: 25px;
+        border-radius: 18px;
+    }
+
+    .contact-header {
+        font-size: 30px;
+    }
+}
