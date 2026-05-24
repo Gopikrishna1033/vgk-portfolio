@@ -1,6 +1,13 @@
-// import React from 'react'
+import { useState } from "react";
 
-import { Button, InputLabel, TextareaAutosize, TextField } from "@mui/material";
+import {
+  Button,
+  InputLabel,
+  TextareaAutosize,
+  TextField,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import "./index.css";
 import collaboration from "../../../assets/Collaborate.png";
 import emailjs from "@emailjs/browser";
@@ -8,8 +15,12 @@ import { useRef } from "react";
 
 const index = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const formRef = useRef();
-  console.log("SERVICE:", import.meta.env.EMAILSERVICEID);
+  // console.log("SERVICE:", import.meta.env.EMAILSERVICEID);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -23,12 +34,14 @@ const index = () => {
       )
       .then(
         () => {
-          alert("Message sent successfully!");
+          setSnackbarOpen(true);
+          setSnackbarMessage("Message sent successfully!");
           formRef.current.reset();
         },
         (error) => {
           console.log(error.text);
-          alert("Failed to send message.");
+          setSnackbarOpen(true);
+          setSnackbarMessage("Failed to send message.");
         },
       );
   };
@@ -76,6 +89,23 @@ const index = () => {
             <Button variant="contained" type="submit">
               Submit
             </Button>
+
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              open={snackbarOpen}
+              autoHideDuration={6000}
+              onClose={() => setSnackbarOpen(false)}
+            >
+              <Alert
+                onClose={() => setSnackbarOpen(false)}
+                severity={
+                  snackbarMessage.includes("success") ? "success" : "error"
+                }
+                variant="filled"
+              >
+                {snackbarMessage}
+              </Alert>
+            </Snackbar>
           </form>
         </div>
       </div>
